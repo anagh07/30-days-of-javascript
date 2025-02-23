@@ -5,7 +5,6 @@
 const createCounter = (init) => {
   let count = init;
   return {
-
     reset: () => {
       count = init;
       return count;
@@ -13,15 +12,14 @@ const createCounter = (init) => {
 
     increment: () => ++count,
 
-    decrement: () => --count
-  }
-}
+    decrement: () => --count,
+  };
+};
 
-const counter = createCounter(5)
+const counter = createCounter(5);
 console.log(counter.increment()); // 6
 console.log(counter.reset()); // 5
 console.log(counter.decrement()); // 4
-
 
 class Counter {
   #init;
@@ -47,9 +45,9 @@ class Counter {
 }
 
 const classCounter = new Counter(5);
-console.log("\nClass Based Counter")
-console.log(classCounter.increment()) // 6
-console.log(classCounter.decrement()) // 5
-console.log(classCounter.decrement()) // 4
-console.log(classCounter.decrement()) // 3
-console.log(classCounter.reset())     // 5
+console.log("\nClass Based Counter");
+console.log(classCounter.increment()); // 6
+console.log(classCounter.decrement()); // 5
+console.log(classCounter.decrement()); // 4
+console.log(classCounter.decrement()); // 3
+console.log(classCounter.reset()); // 5
