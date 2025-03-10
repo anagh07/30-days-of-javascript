@@ -1,0 +1,23 @@
+The input is an array of strings. Each string contains a first_name and last_name separated by a space.
+The task is to print the strings in a sorted sequence alphabetically.
+
+Sorting:
+- sort by last name
+- for common last name sort by first name
+
+Output:
+- print first name
+- for common first name, print first_name + last_name
+
+
+
+# Approach
+Use javascript's array.sort method with a custom comparator method which compares last names when unique, and uses first name when common last name. Use a map to identify entries that have common first names; use the map to format and print output.
+
+## Time complexity
+array.sort = O(n * log n)
+string.split = O(m) where m is length of string
+time complexity = O(m * n * log n)
+
+## Space complexity
+map to store ambiguity flags = O(n)

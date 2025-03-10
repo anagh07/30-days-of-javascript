@@ -1,0 +1,32 @@
+Problem involves:
+
+- Reading a 2 line input:
+where the first line is the number of readings/numbers on the second line. The second line is a sequence of numbers separated by space that contains temperature readings that can be both positive and negative.
+
+- Counting the number of negative readings:
+from the array/list of numbers we need to count the number of negative (below zero) readings. Print the count to console.
+
+
+
+# Approach
+Iterate over the array of readings and increase the count when a negative number is identified.
+
+# Steps
+
+## Process Input
+- Read stdin using readline for 2 lines. Storing in an array of length 2.
+- Parse first line to a number.
+- Parse second line to an array of numbers ('temperatures').
+
+## Solution:
+- iterate over the 'temperatures' array.
+- increase count when temperature is below 0.
+- return print count to console.
+
+## Time Complexity
+O(n)
+We iterate over the input array of length n.
+
+## Space Complexity
+O(1)
+We only use one additional variable to store the count, which mean constant memory.
