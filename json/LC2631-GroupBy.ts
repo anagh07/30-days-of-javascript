@@ -24,8 +24,11 @@ Output:
   "2": [{"id": "2"}]
 }
 */
-interface Array<T> {
-  groupBy(fn: (item: T) => string): Record<string, T[]>;
+declare global {
+  interface Array<T> {
+    groupBy(fn: (item: T) => string): Record<string, T[]>;
+    groupByUsingReduce(fn: (item: T) => string): Record<string, T[]>;
+  }
 }
 
 Array.prototype.groupBy = function (fn) {
@@ -41,6 +44,28 @@ Array.prototype.groupBy = function (fn) {
   return result;
 };
 
+// using array.reduce
+Array.prototype.groupByUsingReduce = function <T>(
+  fn: (item: T) => string,
+): Record<string, T[]> {
+  return this.reduce<Record<string, T[]>>((accum, item) => {
+    const key: string = fn(item);
+
+    if (!accum[key]) {
+      accum[key] = []; // Ensure key is initialized before pushing
+    }
+
+    accum[key].push(item);
+    return accum;
+  }, {} as Record<string, T[]>);
+};
+
 console.log([1, 2, 3].groupBy(String)); // {"1":[1],"2":[2],"3":[3]}
+
+const items = [{ "id": "1" }, { "id": "1" }, { "id": "2" }];
+const getKey = (item: Record<string, string>) => {
+  return item["id"];
+};
+console.log(items.groupByUsingReduce(getKey));
 
 export {};
